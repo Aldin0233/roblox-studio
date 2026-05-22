@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Roblox Studio 수업 자료실</title>
+    <title>3회차 스크립트 자료 | Roblox Studio</title>
     <meta
       name="description"
-      content="Roblox Studio 수업 공유용 PDF 자료실입니다."
+      content="Roblox Studio 3회차 스크립트 프린트와 코드 예제입니다."
     >
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
@@ -15,42 +15,60 @@
     <main class="page-shell">
       <section class="hero" aria-labelledby="page-title">
         <div class="hero__copy">
-          <p class="eyebrow">공유용 수업 자료</p>
-          <h1 id="page-title">Roblox Studio 수업 자료실</h1>
+          <p class="eyebrow">Roblox Studio 수업 자료</p>
+          <h1 id="page-title">3회차 스크립트 자료</h1>
           <p class="hero__summary">
-            회차별 프린트 자료를 정리했습니다. 아래 버튼을 누르면 PDF 파일이 내려받아 집니다.
+            프린트와 코드 예제를 모아 두었습니다.
           </p>
         </div>
       </section>
 
       <section class="materials" aria-labelledby="materials-title">
-        <h2 id="materials-title" class="visually-hidden">회차별 프린트</h2>
+        <h2 id="materials-title" class="visually-hidden">3회차 스크립트 수업 자료</h2>
 
-        <div class="document-grid">
-          <article class="document-card">
-            <h3>1회차 복습 프린트</h3>
-            <a class="download-link" href="docs/lesson-01-review.pdf" download aria-label="1회차 복습 프린트 PDF 다운로드">
-              <span aria-hidden="true">↓</span>
-              다운로드
-            </a>
-          </article>
+        <section class="material-group" aria-labelledby="print-title">
+          <h2 id="print-title" class="material-group__title">프린트</h2>
 
-          <article class="document-card">
-            <h3>2회차 교육 프린트</h3>
-            <a class="download-link" href="docs/lesson-02-training.pdf" download aria-label="2회차 교육 프린트 PDF 다운로드">
-              <span aria-hidden="true">↓</span>
-              다운로드
-            </a>
-          </article>
+          <div class="document-grid document-grid--print">
+            <article class="document-card">
+              <h3>3회차 스크립트 프린트</h3>
+              <a class="download-link" href="docs/lesson-03-script.pdf" download aria-label="3회차 스크립트 프린트 PDF 다운로드">
+                <span aria-hidden="true">↓</span>
+                다운로드
+              </a>
+            </article>
+          </div>
+        </section>
 
-          <article class="document-card">
-            <h3>체크포인트 이동 스크립트 예제</h3>
-            <button class="download-link copy-button" type="button" data-copy-example="checkpointMove">
-              <span aria-hidden="true">⧉</span>
-              복사
-            </button>
-          </article>
-        </div>
+        <section class="material-group" aria-labelledby="examples-title">
+          <h2 id="examples-title" class="material-group__title">코드 예제</h2>
+
+          <div class="document-grid">
+            <article class="document-card">
+              <h3>킬파트 예시</h3>
+              <button class="download-link copy-button" type="button" data-copy-example="killPart">
+                <span aria-hidden="true">⧉</span>
+                복사
+              </button>
+            </article>
+
+            <article class="document-card">
+              <h3>시점 변화</h3>
+              <button class="download-link copy-button" type="button" data-copy-example="firstPersonToggle">
+                <span aria-hidden="true">⧉</span>
+                복사
+              </button>
+            </article>
+
+            <article class="document-card">
+              <h3>스코어 보드</h3>
+              <button class="download-link copy-button" type="button" data-copy-example="scoreBoard">
+                <span aria-hidden="true">⧉</span>
+                복사
+              </button>
+            </article>
+          </div>
+        </section>
       </section>
     </main>
   </body>

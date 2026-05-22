@@ -1,38 +1,52 @@
 const scriptExamples = {
-  checkpointMove: String.raw`local UserInputService = game:GetService("UserInputService")
-local Players = game:GetService("Players")
+  killPart: `local part = script.Parent
 
-local player = Players.LocalPlayer
-local checkpointsFolder = workspace:WaitForChild("체크포인트")
+part.Touched:Connect(function(hit)
+    local humanoid = hit.Parent:FindFirstChild("Humanoid")
 
-local currentIndex = 1
-
-local function teleportToCheckpoint(index)
-    local checkpoint = checkpointsFolder:FindFirstChild("check" .. tostring(index))
-    if not checkpoint then return end
-
-    local character = player.Character or player.CharacterAdded:Wait()
-    local hrp = character:WaitForChild("HumanoidRootPart")
-
-    hrp.CFrame = checkpoint.CFrame + Vector3.new(0, 5, 0)
-end
-
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if gameProcessed then return end
-    print(input.KeyCode)
-
-    if input.KeyCode == Enum.KeyCode.N then
-        currentIndex += 1
-        teleportToCheckpoint(currentIndex)
-    elseif input.KeyCode == Enum.KeyCode.B then
-        currentIndex -= 1
-
-        if currentIndex < 1 then
-            currentIndex = 1
-        end
-
-        teleportToCheckpoint(currentIndex)
+    if humanoid then
+        humanoid.Health = 0
     end
+end)`,
+  firstPersonToggle: `local player = game.Players.LocalPlayer
+local input = game:GetService("UserInputService")
+
+local firstPerson = false
+
+input.InputBegan:Connect(function(key, gameProcessed)
+    if gameProcessed then return end
+
+    if key.KeyCode == Enum.KeyCode.V then
+        firstPerson = not firstPerson
+
+        if firstPerson then
+            player.CameraMode = Enum.CameraMode.LockFirstPerson
+        else
+            player.CameraMode = Enum.CameraMode.Classic
+            player.CameraMinZoomDistance = 6
+            player.CameraMaxZoomDistance = 12
+        end
+    end
+end)`,
+  scoreBoard: `game.Players.PlayerAdded:Connect(function(player)
+    local leaderstats = Instance.new("Folder")
+
+    leaderstats.Name = "leaderstats"
+    leaderstats.Parent = player
+
+    local deaths = Instance.new("IntValue")
+
+    deaths.Name = "Deaths"
+    deaths.Value = 0
+    deaths.Parent = leaderstats
+
+    player.CharacterAdded:Connect(function(character)
+        local humanoid = character:WaitForChild("Humanoid")
+
+        humanoid.Died:Connect(function()
+            deaths.Value += 1
+        end)
+    end)
 end)`,
 };
 

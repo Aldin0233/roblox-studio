@@ -1,14 +1,15 @@
 # Roblox Studio 수업 자료실
 
-학부모님이 접속해 수업 프린트 PDF를 내려받을 수 있는 GitHub Pages용 정적 사이트입니다.
+학부모님이 접속해 수업 프린트를 내려받고 코드 예제를 복사할 수 있는 GitHub Pages용 정적 사이트입니다.
 
 ## 포함 파일
 
-- `index.html`: 자료실 메인 페이지
+- `index.html`: 3회차 스크립트 자료 페이지
 - `styles.css`: 반응형 화면 스타일
 - `script.js`: 스크립트 복사 버튼 동작
 - `docs/lesson-01-review.pdf`: 1회차 복습 프린트
 - `docs/lesson-02-training.pdf`: 2회차 교육 프린트
+- `docs/lesson-03-script.pdf`: 3회차 스크립트 프린트
 
 ## GitHub Pages 배포
 
@@ -24,7 +25,7 @@
 
 - 저장소에는 `parent-docs-site` 폴더 안의 내용만 올리세요. 상위 작업 폴더 전체를 올리면 백업본과 임시 파일이 함께 공개될 수 있습니다.
 - GitHub Pages 설정에서 Folder는 `/ (root)`로 선택하세요.
-- Pages 주소가 생성된 뒤 휴대폰에서도 접속해 두 다운로드 버튼이 각각 동작하는지 확인하세요.
-- 스크립트 예제는 다운로드 파일 없이 버튼을 눌러 복사하는 방식입니다.
-- 문서를 교체할 때는 기존 파일명 `docs/lesson-01-review.pdf`, `docs/lesson-02-training.pdf`를 그대로 유지하면 링크를 다시 고칠 필요가 없습니다.
+- Pages 주소가 생성된 뒤 휴대폰에서도 접속해 PDF 다운로드와 코드 복사 버튼이 동작하는지 확인하세요.
+- 3회차 코드 예제 3개는 `index.html`의 복사 버튼과 `script.js` 예제 본문으로 연결합니다.
+- 문서를 교체할 때는 기존 파일명 `docs/lesson-01-review.pdf`, `docs/lesson-02-training.pdf`, `docs/lesson-03-script.pdf`를 그대로 유지하면 링크를 다시 고칠 필요가 없습니다.
 - 저장소가 공개 저장소라면 Pages 주소를 아는 사람이 문서에 접근할 수 있습니다. 학부모 외부 공개가 부담되면 비공개 저장소의 Pages 사용 가능 여부를 계정 요금제에서 먼저 확인하세요.

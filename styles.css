@@ -74,6 +74,16 @@ h1 {
   padding: 8px 0 0;
 }
 
+.material-group + .material-group {
+  margin-top: 32px;
+}
+
+.material-group__title {
+  margin: 0 0 14px;
+  font-size: 1.18rem;
+  line-height: 1.3;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -87,6 +97,11 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.document-grid--print {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 280px;
 }
 
 .document-card {
@@ -160,13 +175,17 @@ h1 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .document-grid--print {
+    max-width: none;
+  }
+
   .document-card {
     min-height: 150px;
     padding: 22px;
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 620px) {
   .page-shell {
     width: calc(100% - 20px);
   }
