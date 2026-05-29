@@ -7,6 +7,9 @@
   --wash: #f4f7f9;
   --accent: #0f766e;
   --accent-dark: #0b5f59;
+  --accent-soft: #e3f4f1;
+  --orange: #c2410c;
+  --orange-soft: #fff4ed;
   --shadow: 0 18px 42px rgba(31, 41, 51, 0.12);
   font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
 }
@@ -31,7 +34,7 @@ button {
 }
 
 .page-shell {
-  width: min(880px, calc(100% - 32px));
+  width: min(980px, calc(100% - 32px));
   margin: 0 auto;
   padding: 56px 0;
 }
@@ -52,7 +55,7 @@ h2,
 h3,
 p {
   word-break: keep-all;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 h1 {
@@ -74,16 +77,6 @@ h1 {
   padding: 8px 0 0;
 }
 
-.material-group + .material-group {
-  margin-top: 32px;
-}
-
-.material-group__title {
-  margin: 0 0 14px;
-  font-size: 1.18rem;
-  line-height: 1.3;
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -93,23 +86,18 @@ h1 {
   white-space: nowrap;
 }
 
-.document-grid {
+.lesson-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-.document-grid--print {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 280px;
-}
-
-.document-card {
+.lesson-card {
   display: flex;
-  min-height: 180px;
+  min-height: 270px;
   flex-direction: column;
   justify-content: space-between;
-  gap: 28px;
+  gap: 22px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--paper);
@@ -117,43 +105,119 @@ h1 {
   box-shadow: 0 10px 24px rgba(31, 41, 51, 0.07);
 }
 
-.document-card h3 {
+.lesson-card__body {
+  display: grid;
+  gap: 10px;
+}
+
+.lesson-card__badge {
+  width: max-content;
   margin: 0;
-  font-size: 1.35rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  padding: 4px 10px;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.lesson-card h3 {
+  margin: 0;
+  font-size: 1.38rem;
   line-height: 1.32;
 }
 
-.download-link {
+.lesson-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.lesson-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+  gap: 10px;
+}
+
+.action-link,
+.copy-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   min-height: 48px;
-  width: 100%;
   border: 0;
   border-radius: 8px;
   background: var(--accent);
   color: #ffffff;
-  padding: 12px 18px;
+  padding: 12px 16px;
   cursor: pointer;
   font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
   text-decoration: none;
-  transition: background-color 160ms ease, transform 160ms ease;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
-.download-link:hover,
-.download-link:focus-visible {
+.action-link:hover,
+.action-link:focus-visible,
+.copy-chip:hover,
+.copy-chip:focus-visible {
   background: var(--accent-dark);
   transform: translateY(-1px);
 }
 
-.download-link:focus-visible {
+.action-link:focus-visible,
+.copy-chip:focus-visible {
   outline: 3px solid rgba(245, 158, 11, 0.48);
   outline-offset: 3px;
 }
 
-.download-link.is-copied {
+.action-link--secondary {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+}
+
+.action-link--secondary:hover,
+.action-link--secondary:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.copy-chip-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.copy-chip-row--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.copy-chip {
+  min-height: 44px;
+  background: var(--orange-soft);
+  color: var(--orange);
+  padding: 10px 12px;
+}
+
+.copy-chip:hover,
+.copy-chip:focus-visible {
+  background: #fed7aa;
+  color: #7c2d12;
+}
+
+.copy-button.is-copied {
   background: var(--accent-dark);
+  color: #ffffff;
+}
+
+.copy-status {
+  min-height: 1.5em;
+  margin: 18px 0 0;
+  color: var(--accent-dark);
+  font-size: 0.95rem;
+  font-weight: 800;
 }
 
 @media (max-width: 820px) {
@@ -171,16 +235,12 @@ h1 {
     font-size: 1rem;
   }
 
-  .document-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .lesson-grid {
+    grid-template-columns: 1fr;
   }
 
-  .document-grid--print {
-    max-width: none;
-  }
-
-  .document-card {
-    min-height: 150px;
+  .lesson-card {
+    min-height: 230px;
     padding: 22px;
   }
 }
@@ -190,15 +250,17 @@ h1 {
     width: calc(100% - 20px);
   }
 
-  .document-card {
+  .lesson-card {
     padding: 18px;
   }
 
-  .document-grid {
+  .lesson-actions,
+  .copy-chip-row {
     grid-template-columns: 1fr;
   }
 
-  .download-link {
+  .action-link,
+  .copy-chip {
     padding-inline: 12px;
   }
 }
