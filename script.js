@@ -84,6 +84,75 @@ end)`,
         end)
     end)
 end)`,
+  flyButton: `local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local button = script.Parent
+
+local flying = false
+local flyLoop = nil
+
+local FLY_SPEED = 60 -- 고정 속도
+
+button.MouseButton1Click:Connect(function()
+    flying = not flying
+
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local root = character:WaitForChild("HumanoidRootPart")
+
+    if flying then
+        button.Text = "날기 ON"
+        humanoid.PlatformStand = true
+
+        flyLoop = RunService.RenderStepped:Connect(function()
+            local camera = workspace.CurrentCamera
+            local move = Vector3.new(0, 0, 0)
+
+            if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+                move = move + camera.CFrame.LookVector
+            end
+
+            if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+                move = move - camera.CFrame.LookVector
+            end
+
+            if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+                move = move - camera.CFrame.RightVector
+            end
+
+            if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+                move = move + camera.CFrame.RightVector
+            end
+
+            if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+                move = move + Vector3.new(0, 1, 0)
+            end
+
+            if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
+                move = move - Vector3.new(0, 1, 0)
+            end
+
+            if move.Magnitude > 0 then
+                root.AssemblyLinearVelocity = move.Unit * FLY_SPEED
+            else
+                root.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+            end
+        end)
+    else
+        button.Text = "날기 OFF"
+        humanoid.PlatformStand = false
+
+        if flyLoop then
+            flyLoop:Disconnect()
+            flyLoop = nil
+        end
+
+        root.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+    end
+end)`,
 };
 
 async function copyText(text) {
